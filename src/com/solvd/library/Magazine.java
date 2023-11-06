@@ -18,7 +18,7 @@ public class Magazine extends LiteraryPiece {
         System.out.println("Genre: " + genre.toString());
         System.out.println("Issue number: " + Integer.toString(issueNumber) + " dated on " + publishDate);
         System.out.println("Published by " + publisher);
-        System.out.println("Price: " + Float.toString(getPrice()) + " PLN");
+        System.out.println("Price: " + Float.toString(price) + " PLN");
         return;
     }
 }

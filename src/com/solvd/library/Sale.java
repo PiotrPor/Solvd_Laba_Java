@@ -27,7 +27,7 @@ public class Sale extends GivingLiterature {
     public void describeThisSale() {
         String writtenText = ""; //empty string
         writtenText += "On " + dateWhen + " \"" + pieceOfLiterature.title + "\" has been sold to ";
-        writtenText += "client " + Integer.toString(getClientNumber());
+        writtenText += "client " + Integer.toString(clientNumber);
         writtenText += " for " + Float.toString(cost) + " PLN.";
         System.out.print(writtenText);
         return;

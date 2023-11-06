@@ -16,7 +16,7 @@ public class Lease extends GivingLiterature {
     public void describeThisLease() {
         String writtenText = ""; //empty string
         writtenText += "On " + dateWhen + " \"" + pieceOfLiterature.title + "\" has been leased to ";
-        writtenText += "client " + Integer.toString(getClientNumber());
+        writtenText += "client " + Integer.toString(clientNumber);
         writtenText += " for " + Integer.toString(durationDays) + " days.";
         System.out.print(writtenText);
         return;

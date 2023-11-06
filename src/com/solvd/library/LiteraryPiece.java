@@ -1,11 +1,11 @@
 package com.solvd.library;
 
-public class LiteraryPiece {
+abstract public class LiteraryPiece {
     public String title;
     public String publisher;
     public String publishDate;
     public LiteratureGenre genre;
-    private float price;
+    protected float price;
     
     public LiteraryPiece() {
         title = " ";
@@ -24,7 +24,7 @@ public class LiteraryPiece {
     }
     
     public void setPrice(float newPrice) {
-        if (newPrice > 0f) {
+        if (newPrice >= 0f) {
             price = newPrice;
         }
         return;
@@ -33,4 +33,6 @@ public class LiteraryPiece {
     public float getPrice() {
         return price;
     }
+    
+    abstract public void describeItself();
 }

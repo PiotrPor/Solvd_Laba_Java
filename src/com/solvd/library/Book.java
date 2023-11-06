@@ -37,7 +37,7 @@ public class Book extends LiteraryPiece {
         System.out.println("Written by " + author);
         System.out.println("Published by " + publisher + " on " + publishDate);
         System.out.println("ISBN " + isbn);
-        System.out.println("Price: " + Float.toString(getPrice()) + " PLN");
+        System.out.println("Price: " + Float.toString(price) + " PLN");
         return;
     }
 }

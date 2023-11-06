@@ -2,8 +2,8 @@ package com.solvd.library;
 
 public class GivingLiterature {
     public String dateWhen;
-    public LiteraryPiece pieceOfLiterature;
-    private int clientNumber;
+    protected LiteraryPiece pieceOfLiterature;
+    protected int clientNumber;
     
     public GivingLiterature() {
         dateWhen = "06.11.2023";
@@ -15,6 +15,15 @@ public class GivingLiterature {
         dateWhen = when;
         pieceOfLiterature = lp;
         clientNumber = cn;
+    }
+    
+    public void setPieceOfLiterature(LiteraryPiece newLP) {
+        pieceOfLiterature = newLP;
+        return;
+    }
+    
+    public LiteraryPiece getPieceOfLiterature() {
+        return pieceOfLiterature;
     }
     
     public void setClientNumber(int newClientNumber) {
