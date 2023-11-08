@@ -17,8 +17,9 @@ public class Person {
     public void setPersonName(String newName) {
         if (newName.length() >= 2) {
             name = newName;
+        } else {
+            System.out.println("First name can't be shorter than 2 characters!");
         }
-        return;
     }
     
     public String getPersonName() {
@@ -28,8 +29,9 @@ public class Person {
     public void setPersonSurname(String newName) {
         if (newName.length() >= 2) {
             surname = newName;
+        } else {
+            System.out.println("Surname can't be shorter than 2 characters!");
         }
-        return;
     }
     
     public String getPersonSurname() {

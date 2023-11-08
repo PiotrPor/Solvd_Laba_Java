@@ -23,14 +23,14 @@ public class MainClass {
         
         booksForLibrary.add(new Book(
                 "The ABC murders",
-                "Wydawnictwo Dolnoslaskie", //Polish language
+                "Wydawnictwo Dolnoslaskie",
                 "14.05.2013",
                 LiteratureGenre.CRIME,
                 14.99f,
                 "Agatha Christie",
                 "9788327153999"));
         booksForLibrary.add(new Book(
-                "Historia pracy. Nowe dzieje ludzkosci", //Polish language
+                "Historia pracy. Nowe dzieje ludzkosci",
                 "Horyzont Znak",
                 "2023",
                 LiteratureGenre.HISTORY,
@@ -38,18 +38,35 @@ public class MainClass {
                 "Jan Lucassen",
                 "9788324088713"));
         
-        //array with magazines is left empty for  now
+        magazinesForLibrary.add(new Magazine(
+                "PC Format",
+                "Fantasyexpo",
+                "01.03.2021",
+                LiteratureGenre.TECHNOLOGY,
+                9.5f,
+                247));
+        magazinesForLibrary.add(new Magazine(
+                "CD-Action",
+                "Fantasyexpo",
+                "01.04.2022",
+                LiteratureGenre.OTHER,
+                34.5f,
+                312));
         
         //-------------------
         
-        Client firstClient = new Client("Andrew", "Bookeater", 2);
+        Client firstClient = new Client("Andrew", "Bookeater", 2, LiteratureGenre.CRIME);
         Library onlyLibrary = new Library(employeesForLibrary, booksForLibrary, magazinesForLibrary);
         
-        onlyLibrary.searchForBook("The ABC murders");
+        List<Book> booksForHim = onlyLibrary.searchForBooksByGenre(firstClient.getFavouriteGenre());
         System.out.println("\n===================\n");
-        onlyLibrary.startLeaseOfBook("3.11.2023", booksForLibrary.get(0), firstClient, 16);
-        onlyLibrary.printListOfLeases();
-        
-        return;
+        if (!booksForHim.isEmpty()) {
+            System.out.println("---- BOOK FOUND ----");
+            booksForHim.get(0).describeItself();
+            onlyLibrary.startLeaseOfBook("10.11.2023", booksForHim.get(0), firstClient, 16);
+            onlyLibrary.printListOfLeases();
+        } else {
+            System.out.println("We don't have books you're looking for.");
+        }
     }
 }

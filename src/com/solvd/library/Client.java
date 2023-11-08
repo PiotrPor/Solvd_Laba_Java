@@ -1,16 +1,35 @@
 package com.solvd.library;
 
 public class Client extends Person {
-    public int clientNumber;
+    private int clientNumber;
+    private LiteratureGenre favouriteGenre;
     
     public Client() {
         super();
         clientNumber = 0;
+        favouriteGenre = LiteratureGenre.OTHER;
     }
     
-    public Client(String theirName, String theirSurname, int theirNumber) {
+    public Client(String theirName, String theirSurname, int theirNumber, LiteratureGenre theirFavourite) {
         super(theirName, theirSurname);
         clientNumber = theirNumber;
+        favouriteGenre = theirFavourite;
+    }
+    
+    public void setClientNumber(int newNumber) {
+        clientNumber = newNumber;
+    }
+    
+    public int getClientNumber() {
+        return clientNumber;
+    }
+    
+    public void setFavouriteGenre(LiteratureGenre newFavourite) {
+        favouriteGenre = newFavourite;
+    }
+    
+    public LiteratureGenre getFavouriteGenre() {
+       return favouriteGenre;
     }
     
     // Override Object methods

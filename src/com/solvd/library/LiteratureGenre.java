@@ -3,6 +3,7 @@ package com.solvd.library;
 public enum LiteratureGenre {
     HISTORY,
     BIOGRAPHY,
+    TECHNOLOGY,
     CRIME,
     ROMANCE,
     ACTION,
@@ -19,6 +20,8 @@ public enum LiteratureGenre {
                 return "History";
             case BIOGRAPHY:
                 return "Biography";
+            case TECHNOLOGY:
+                return "Technology";
             case CRIME:
                 return "Crime";
             case ROMANCE:

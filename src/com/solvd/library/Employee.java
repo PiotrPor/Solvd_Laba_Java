@@ -1,7 +1,7 @@
 package com.solvd.library;
 
 public class Employee extends Person {
-    public int employeeNumber;
+    private int employeeNumber;
     private float salary;
     
     public Employee() {
@@ -16,11 +16,20 @@ public class Employee extends Person {
         salary = slr;
     }
     
+    public void setEmployeeNumber(int newNumber) {
+        employeeNumber = newNumber;
+    }
+    
+    public int getEmployeeNumber() {
+        return employeeNumber;
+    }
+    
     public void setSalary(float newSalary) {
         if (newSalary > 0f) {
             salary = newSalary;
+        } else {
+            System.out.println("Salary can't be zero!");
         }
-        return;
     }
     
     public float getSalary() {

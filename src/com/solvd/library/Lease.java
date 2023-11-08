@@ -1,24 +1,32 @@
 package com.solvd.library;
 
 public class Lease extends GivingLiterature {
-    public int durationDays;
+    private int durationInDays;
     
     public Lease() {
         super();
-        durationDays = 14;
+        durationInDays = 14;
     }
     
     public Lease(String when, LiteraryPiece lp, int cn, int dur) {
         super(when, lp, cn);
-        durationDays = dur;
+        durationInDays = dur;
+    }
+    
+    public int getDurationInDays() {
+        return durationInDays;
     }
     
     public void describeThisLease() {
+        System.out.println(this.toString());
+    }
+    
+    @Override
+    public String toString() {
         String writtenText = ""; //empty string
         writtenText += "On " + dateWhen + " \"" + pieceOfLiterature.title + "\" has been leased to ";
         writtenText += "client " + Integer.toString(clientNumber);
-        writtenText += " for " + Integer.toString(durationDays) + " days.";
-        System.out.print(writtenText);
-        return;
+        writtenText += " for " + Integer.toString(durationInDays) + " days.";
+        return writtenText;
     }
 }

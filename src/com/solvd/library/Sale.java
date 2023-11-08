@@ -18,18 +18,23 @@ public class Sale extends GivingLiterature {
     }
     
     public void setCost(float newCost) {
-        if (newCost > 0) {
+        if (newCost >= 0) {
             cost = newCost;
+        } else {
+            System.out.println("Cost can't be a negative number.");
         }
-        return;
     }
     
     public void describeThisSale() {
+        System.out.print(this.toString());
+    }
+    
+    @Override
+    public String toString() {
         String writtenText = ""; //empty string
         writtenText += "On " + dateWhen + " \"" + pieceOfLiterature.title + "\" has been sold to ";
         writtenText += "client " + Integer.toString(clientNumber);
         writtenText += " for " + Float.toString(cost) + " PLN.";
-        System.out.print(writtenText);
-        return;
+        return writtenText;
     }
 }

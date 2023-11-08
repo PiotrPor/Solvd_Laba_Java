@@ -1,10 +1,10 @@
 package com.solvd.library;
 
 abstract public class LiteraryPiece {
-    public String title;
+    protected String title;
     public String publisher;
     public String publishDate;
-    public LiteratureGenre genre;
+    protected LiteratureGenre genre;
     protected float price;
     
     public LiteraryPiece() {
@@ -23,11 +23,32 @@ abstract public class LiteraryPiece {
         price = newPrice;
     }
     
+    public void setTitle(String newTitle) {
+        if (!(newTitle.isEmpty() || newTitle.equals(" "))) {
+            title = newTitle;
+        } else {
+            System.out.println("Title can't be an empty string.");
+        }
+    }
+    
+    public String getTitle() {
+        return title;
+    }
+    
+    public void setGenre(LiteratureGenre newGenre) {
+        genre = newGenre;
+    }
+    
+    public LiteratureGenre getGenre() {
+        return genre;
+    }
+    
     public void setPrice(float newPrice) {
         if (newPrice >= 0f) {
             price = newPrice;
+        } else {
+            System.out.println("Price can't be lower than 0.");
         }
-        return;
     }
     
     public float getPrice() {

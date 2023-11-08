@@ -1,7 +1,7 @@
 package com.solvd.library;
 
 public class GivingLiterature {
-    public String dateWhen;
+    protected String dateWhen;
     protected LiteraryPiece pieceOfLiterature;
     protected int clientNumber;
     
@@ -17,9 +17,27 @@ public class GivingLiterature {
         clientNumber = cn;
     }
     
+    public String getDateWhen() {
+        return dateWhen;
+    }
+    
+    public void setDateWhen(String newDate) {
+        boolean isDate = false;
+        for (int i = 0; i < newDate.length(); i++) {
+            if (!Character.isDigit(newDate.charAt(i))) {
+                isDate = true;
+                break;
+            }
+        }
+        if (isDate) {
+            dateWhen = newDate;
+        } else {
+            System.out.println("Date must have separators.");
+        }
+    }
+    
     public void setPieceOfLiterature(LiteraryPiece newLP) {
         pieceOfLiterature = newLP;
-        return;
     }
     
     public LiteraryPiece getPieceOfLiterature() {
@@ -28,7 +46,6 @@ public class GivingLiterature {
     
     public void setClientNumber(int newClientNumber) {
         clientNumber = newClientNumber;
-        return;
     }
     
     public int getClientNumber() {

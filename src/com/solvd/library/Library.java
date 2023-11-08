@@ -31,47 +31,44 @@ public class Library {
     
     public void addToIncome(float toBeAdded) {
         income += toBeAdded;
-        return;
     }
     
     public float getIncome() {
         return income;
     }
     
-    public void searchForBook(String searchedTitle) {
-        Book searchedBook = new Book();
-        boolean bookWasFound = false;
+    public List<Book> searchForBooksByTitle(String searchedTitle) {
+        List<Book> foundBooks = new ArrayList<>();
         for (int i = 0; i < ourBooks.size(); i++) {
             if (ourBooks.get(i).title.equals(searchedTitle)) {
-                searchedBook = ourBooks.get(i);
-                bookWasFound = true;
-                break;
+                foundBooks.add(ourBooks.get(i));
             }
         }
-        if (bookWasFound) {
-            System.out.println("---- BOOK FOUND ----");
-            searchedBook.describeItself();
-        } else {
-            System.out.println("---- book hasn't been found");
+        return foundBooks;
+    }
+    
+    public List<Book> searchForBooksByGenre(LiteratureGenre searchedGenre) {
+        List<Book> foundBooks = new ArrayList<>();
+        for (int i = 0; i < ourBooks.size(); i++) {
+            if (ourBooks.get(i).getGenre() == searchedGenre) {
+                foundBooks.add(ourBooks.get(i));
+            }
         }
-        return;
+        return foundBooks;
     }
     
     public void startLeaseOfBook(String startingDate, Book b, Client thisClient, int lengthInDays) {
         currentLeases.add(new Lease(startingDate, b, thisClient.clientNumber, lengthInDays));
-        return;
     }
     
     public void sellBook(String dateOfSale, Book b, Client thisClient) {
         listOfSales.add(new Sale(dateOfSale, b, thisClient.clientNumber));
-        return;
     }
     
     //for now there's no method to lease a magazine
     
     public void sellMagazine(String dateOfSale, Magazine m, Client thisClient) {
         listOfSales.add(new Sale(dateOfSale, m, thisClient.clientNumber));
-        return;
     }
     
     public void printListOfLeases() {
@@ -84,7 +81,6 @@ public class Library {
         } else {
             System.out.println("The are no leases");
         }
-        return;
     }
     
     public void printListOfSales() {
@@ -97,6 +93,5 @@ public class Library {
         } else {
             System.out.println("Nothing has been sold");
         }
-        return;
     }
 }
