@@ -11,6 +11,10 @@ public class Library implements IStorageOfBooks, IForManagingBusiness {
     public List<Sale> listOfSales;
     private float income;
     
+    static {
+        System.out.println(" ! We're ready to open our library ! ");
+    }
+    
     public Library() {
         listOfEmployees = new ArrayList<>();
         ourBooks = new ArrayList<>();

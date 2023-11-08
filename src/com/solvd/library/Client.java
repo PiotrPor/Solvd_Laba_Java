@@ -1,6 +1,6 @@
 package com.solvd.library;
 
-public class Client extends Person {
+public final class Client extends Person {
     private int clientNumber;
     private LiteratureGenre favouriteGenre;
     

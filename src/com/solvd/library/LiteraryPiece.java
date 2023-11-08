@@ -35,11 +35,11 @@ abstract public class LiteraryPiece implements IPurchasable {
         return title;
     }
     
-    public void setGenre(LiteratureGenre newGenre) {
+    public final void setGenre(LiteratureGenre newGenre) {
         genre = newGenre;
     }
     
-    public LiteratureGenre getGenre() {
+    public final LiteratureGenre getGenre() {
         return genre;
     }
     

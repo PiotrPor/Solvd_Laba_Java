@@ -3,11 +3,12 @@ package com.solvd.library;
 public class Book extends LiteraryPiece {
     private String author;
     private String isbn; //without letters "ISBN" at the beginning, only digits
+    public static final String DEFAULT_ISBN = "0000000000000";
     
     public Book() {
         super();
         author = " ";
-        isbn = "0000000000000";
+        isbn = DEFAULT_ISBN;
     }
     
     public Book(String newTitle, String newPublish, String whenPublished, LiteratureGenre whatGenre, float newPrice, String itsAuthor, String isbnNumber) {
@@ -16,7 +17,7 @@ public class Book extends LiteraryPiece {
         if (isbnNumber.length() == 10 || isbnNumber.length() == 13) {
             isbn = isbnNumber;
         } else {
-            isbn = "000000000000";
+            isbn = DEFAULT_ISBN;
         }
     }
     
@@ -46,6 +47,10 @@ public class Book extends LiteraryPiece {
     
     public void describeItself() {
         System.out.println(this.toString());
+    }
+    
+    public static String getDefaultISBN() {
+        return DEFAULT_ISBN;
     }
     
     @Override
