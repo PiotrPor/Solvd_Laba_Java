@@ -3,7 +3,7 @@ package com.solvd.library;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Library {
+public class Library implements IStorageOfBooks, IForManagingBusiness {
     public List<Employee> listOfEmployees;
     public List<Book> ourBooks;
     public List<Magazine> ourMagazines;
@@ -75,7 +75,7 @@ public class Library {
         if (!currentLeases.isEmpty()) {
             for (int i = 0; i < currentLeases.size(); i++) {
                 System.out.print(Integer.toString(i + 1) + ") ");
-                currentLeases.get(i).describeThisLease();
+                currentLeases.get(i).describeTransaction();
                 System.out.print("\n");
             }
         } else {
@@ -87,7 +87,7 @@ public class Library {
         if (!listOfSales.isEmpty()) {
             for (int i = 0; i < listOfSales.size(); i++) {
                 System.out.print(Integer.toString(i + 1) + ") ");
-                listOfSales.get(i).describeThisSale();
+                listOfSales.get(i).describeTransaction();
                 System.out.print("\n");
             }
         } else {

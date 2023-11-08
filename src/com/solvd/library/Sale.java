@@ -1,6 +1,6 @@
 package com.solvd.library;
 
-public class Sale extends GivingLiterature {
+public class Sale extends GivingLiterature implements IForTransaction {
     private float cost;
     
     public Sale() {
@@ -25,7 +25,7 @@ public class Sale extends GivingLiterature {
         }
     }
     
-    public void describeThisSale() {
+    public void describeTransaction() {
         System.out.print(this.toString());
     }
     

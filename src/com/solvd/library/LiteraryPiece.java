@@ -1,6 +1,6 @@
 package com.solvd.library;
 
-abstract public class LiteraryPiece {
+abstract public class LiteraryPiece implements IPurchasable {
     protected String title;
     public String publisher;
     public String publishDate;

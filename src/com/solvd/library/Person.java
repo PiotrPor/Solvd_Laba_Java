@@ -1,6 +1,6 @@
 package com.solvd.library;
 
-public class Person {
+public class Person implements IHasName {
     protected String name;
     protected String surname;
     
@@ -14,7 +14,7 @@ public class Person {
         surname = sur;
     }
     
-    public void setPersonName(String newName) {
+    public void setName(String newName) {
         if (newName.length() >= 2) {
             name = newName;
         } else {
@@ -22,11 +22,11 @@ public class Person {
         }
     }
     
-    public String getPersonName() {
+    public String getName() {
         return name;
     }
     
-    public void setPersonSurname(String newName) {
+    public void setSurname(String newName) {
         if (newName.length() >= 2) {
             surname = newName;
         } else {
@@ -34,7 +34,7 @@ public class Person {
         }
     }
     
-    public String getPersonSurname() {
+    public String getSurname() {
         return surname;
     }
     

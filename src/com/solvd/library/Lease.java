@@ -1,6 +1,6 @@
 package com.solvd.library;
 
-public class Lease extends GivingLiterature {
+public class Lease extends GivingLiterature implements IForTransaction {
     private int durationInDays;
     
     public Lease() {
@@ -17,7 +17,7 @@ public class Lease extends GivingLiterature {
         return durationInDays;
     }
     
-    public void describeThisLease() {
+    public void describeTransaction() {
         System.out.println(this.toString());
     }
     
