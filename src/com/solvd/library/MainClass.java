@@ -3,15 +3,26 @@ package com.solvd.library;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /*
 Among the files in this package
   "MainClass.java" contains the main()
   "LiteratureGenre.java" is an enumerator
-  remaining 10 files are classes
+  11 files are classes
+  5 files are interfaces
 */
 
 public class MainClass {
+    private static final Logger LOGGER = LogManager.getLogger(Main.class);
+    
+    static {
+        System.setProperty("log4j.configurationFile", "log4j.xml");
+    }
+
     public static void main(String[] args) {
+        LOGGER.info("main() starts running");
         List<Employee> employeesForLibrary = new ArrayList<>();
         List<Book> booksForLibrary = new ArrayList<>();
         List<Magazine> magazinesForLibrary = new ArrayList<>();
@@ -59,18 +70,18 @@ public class MainClass {
         Library onlyLibrary = new Library(employeesForLibrary, booksForLibrary, magazinesForLibrary);
         
         List<Book> booksForHim = onlyLibrary.searchForBooksByGenre(firstClient.getFavouriteGenre());
-        System.out.println("\n===================\n");
+        LOGGER.info("\n===================\n");
         if (!booksForHim.isEmpty()) {
             try {
                 booksForHim.get(0).describeItself();
                 onlyLibrary.startLeaseOfBook("10.11.2023", booksForHim.get(0), firstClient, 16);
             } catch(ArrayIndexOutOfBoundsException e) {
-                System.out.println("Tried to access invalid index in array of books");
+                LOGGER.warn("Tried to access invalid index in array of books");
             }
-            System.out.println("---- BOOK FOUND ----");
+            LOGGER.info("---- BOOK FOUND ----");
             onlyLibrary.printListOfLeases();
         } else {
-            System.out.println("We don't have books you're looking for.");
+            LOGGER.info("We don't have books you're looking for.");
         }
     }
 }

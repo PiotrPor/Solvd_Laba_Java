@@ -1,8 +1,12 @@
 package com.solvd.library;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Person implements IHasName {
     protected String name;
     protected String surname;
+    private static final Logger LOGGER = LogManager.getLogger(Person.class);
     
     public Person() {
         name = "John";
@@ -18,7 +22,7 @@ public class Person implements IHasName {
         if (newName.length() >= 2) {
             name = newName;
         } else {
-            System.out.println("First name can't be shorter than 2 characters!");
+            LOGGER.warn("First name can't be shorter than 2 characters!");
         }
     }
     
@@ -30,7 +34,7 @@ public class Person implements IHasName {
         if (newName.length() >= 2) {
             surname = newName;
         } else {
-            System.out.println("Surname can't be shorter than 2 characters!");
+            LOGGER.warn("Surname can't be shorter than 2 characters!");
         }
     }
     

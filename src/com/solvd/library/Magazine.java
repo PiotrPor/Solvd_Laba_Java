@@ -1,7 +1,11 @@
 package com.solvd.library;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Magazine extends LiteraryPiece {
     private int issueNumber;
+    private static final Logger LOGGER = LogManager.getLogger(Magazine.class);
     
     public Magazine() {
         super();
@@ -17,7 +21,7 @@ public class Magazine extends LiteraryPiece {
         if (newNumber >= 0) {
             issueNumber = newNumber;
         } else {
-            System.out.println("Issue number can't be lower than 0.");
+            LOGGER.warn("Issue number can't be lower than 0.");
         }
     }
     
@@ -26,7 +30,7 @@ public class Magazine extends LiteraryPiece {
     }
     
     public void describeItself() {
-        System.out.println(this.toString());
+        LOGGER.info(this.toString());
     }
     
     @Override

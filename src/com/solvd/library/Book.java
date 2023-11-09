@@ -1,9 +1,13 @@
 package com.solvd.library;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Book extends LiteraryPiece {
     private String author;
     private String isbn; //without letters "ISBN" at the beginning, only digits
     public static final String DEFAULT_ISBN = "0000000000000";
+    private static final Logger LOGGER = LogManager.getLogger(Book.class);
     
     public Book() {
         super();
@@ -26,7 +30,7 @@ public class Book extends LiteraryPiece {
             cc.checkIfBlank();
             author = newAuthor;
         } catch(RuntimeException e) {
-            System.out.println("Exception while changing author: "+ e.getMessage());
+            LOGGER.warn("Exception while changing author: "+ e.getMessage());
         }
     }
     
@@ -38,7 +42,7 @@ public class Book extends LiteraryPiece {
         if (newISBN.length() == 10 || newISBN.length() == 13) {
             isbn = newISBN;
         } else {
-            System.out.println("ISBN code must have either 10 or 13 digits");
+            LOGGER.warn("ISBN code must have either 10 or 13 digits");
         }
     }
     
@@ -47,7 +51,7 @@ public class Book extends LiteraryPiece {
     }
     
     public void describeItself() {
-        System.out.println(this.toString());
+        LOGGER.info(this.toString());
     }
     
     public static String getDefaultISBN() {

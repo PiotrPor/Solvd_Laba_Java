@@ -1,7 +1,11 @@
 package com.solvd.library;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Sale extends GivingLiterature implements IForTransaction {
     private float cost;
+    private static final Logger LOGGER = LogManager.getLogger(Sale.class);
     
     public Sale() {
         super();
@@ -26,7 +30,7 @@ public class Sale extends GivingLiterature implements IForTransaction {
     }
     
     public void describeTransaction() {
-        System.out.print(this.toString());
+        LOGGER.info(this.toString());
     }
     
     @Override

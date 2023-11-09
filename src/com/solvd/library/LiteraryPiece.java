@@ -1,11 +1,15 @@
 package com.solvd.library;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 abstract public class LiteraryPiece implements IPurchasable {
     protected String title;
     public String publisher;
     public String publishDate;
     protected LiteratureGenre genre;
     protected float price;
+    private static final Logger LOGGER = LogManager.getLogger(LiteraryPiece.class);
     
     public LiteraryPiece() {
         title = " ";
@@ -28,7 +32,7 @@ abstract public class LiteraryPiece implements IPurchasable {
             cc.checkIfBlank();
             title = newTitle;
         } catch(RuntimeException e) {
-            System.out.println("Exception while changing title: "+ e.getMessage());
+            LOGGER.warn("Exception while changing title: "+ e.getMessage());
         }
     }
     

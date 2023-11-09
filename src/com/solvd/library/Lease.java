@@ -1,7 +1,11 @@
 package com.solvd.library;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Lease extends GivingLiterature implements IForTransaction {
     private int durationInDays;
+    private static final Logger LOGGER = LogManager.getLogger(Lease.class);
     
     public Lease() {
         super();
@@ -18,7 +22,7 @@ public class Lease extends GivingLiterature implements IForTransaction {
     }
     
     public void describeTransaction() {
-        System.out.println(this.toString());
+        LOGGER.info(this.toString());
     }
     
     @Override

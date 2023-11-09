@@ -3,6 +3,9 @@ package com.solvd.library;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Library implements IStorageOfBooks, IForManagingBusiness {
     public List<Employee> listOfEmployees;
     public List<Book> ourBooks;
@@ -10,6 +13,7 @@ public class Library implements IStorageOfBooks, IForManagingBusiness {
     public List<Lease> currentLeases;
     public List<Sale> listOfSales;
     private float income;
+    private static final Logger LOGGER = LogManager.getLogger(Library.class);
     
     static {
         System.out.println(" ! We're ready to open our library ! ");
@@ -77,25 +81,27 @@ public class Library implements IStorageOfBooks, IForManagingBusiness {
     
     public void printListOfLeases() {
         if (!currentLeases.isEmpty()) {
+            LOGGER.info("Leases we've done:");
             for (int i = 0; i < currentLeases.size(); i++) {
-                System.out.print(Integer.toString(i + 1) + ") ");
+                LOGGER.info(Integer.toString(i + 1) + ") ");
                 currentLeases.get(i).describeTransaction();
-                System.out.print("\n");
+                LOGGER.info("\n");
             }
         } else {
-            System.out.println("The are no leases");
+            LOGGER.info("The are no leases");
         }
     }
     
     public void printListOfSales() {
         if (!listOfSales.isEmpty()) {
+            LOGGER.info("Sales we've done:");
             for (int i = 0; i < listOfSales.size(); i++) {
-                System.out.print(Integer.toString(i + 1) + ") ");
+                LOGGER.info(Integer.toString(i + 1) + ") ");
                 listOfSales.get(i).describeTransaction();
-                System.out.print("\n");
+                LOGGER.info("\n");
             }
         } else {
-            System.out.println("Nothing has been sold");
+            LOGGER.info("Nothing has been sold");
         }
     }
 }

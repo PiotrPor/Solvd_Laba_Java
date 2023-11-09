@@ -1,9 +1,13 @@
 package com.solvd.library;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class GivingLiterature {
     protected String dateWhen;
     protected LiteraryPiece pieceOfLiterature;
     protected int clientNumber;
+    private static final Logger LOGGER = LogManager.getLogger(GivingLiterature.class);
     
     public GivingLiterature() {
         dateWhen = "06.11.2023";
@@ -32,7 +36,7 @@ public class GivingLiterature {
         if (isDate) {
             dateWhen = newDate;
         } else {
-            System.out.println("Date must have separators.");
+            LOGGER.warn("Date must have separators.");
         }
     }
     

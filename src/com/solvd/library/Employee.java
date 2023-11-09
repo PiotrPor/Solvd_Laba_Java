@@ -1,8 +1,12 @@
 package com.solvd.library;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class Employee extends Person {
     private int employeeNumber;
     private float salary;
+    private static final Logger LOGGER = LogManager.getLogger(Employee.class);
     
     public Employee() {
         super();
@@ -28,7 +32,7 @@ public class Employee extends Person {
         if (newSalary > 0f) {
             salary = newSalary;
         } else {
-            System.out.println("Salary can't be zero!");
+            LOGGER.warn("Salary can't be zero!");
         }
     }
     
