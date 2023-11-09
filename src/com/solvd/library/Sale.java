@@ -17,11 +17,11 @@ public class Sale extends GivingLiterature implements IForTransaction {
         return cost;
     }
     
-    public void setCost(float newCost) {
+    public void setCost(float newCost) throws ArithmeticException {
         if (newCost >= 0) {
             cost = newCost;
         } else {
-            System.out.println("Cost can't be a negative number.");
+            throw new ArithmeticException("Cost can't be negative");
         }
     }
     

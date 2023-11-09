@@ -24,10 +24,11 @@ abstract public class LiteraryPiece implements IPurchasable {
     }
     
     public void setTitle(String newTitle) {
-        if (!(newTitle.isEmpty() || newTitle.equals(" "))) {
+        try (ClassCheckingForStringContent cc = new ClassCheckingForStringContent(newTitle)) {
+            cc.checkIfBlank();
             title = newTitle;
-        } else {
-            System.out.println("Title can't be an empty string.");
+        } catch(RuntimeException e) {
+            System.out.println("Exception while changing title: "+ e.getMessage());
         }
     }
     
@@ -43,11 +44,11 @@ abstract public class LiteraryPiece implements IPurchasable {
         return genre;
     }
     
-    public void setPrice(float newPrice) {
+    public void setPrice(float newPrice) throws ArithmeticException {
         if (newPrice >= 0f) {
             price = newPrice;
         } else {
-            System.out.println("Price can't be lower than 0.");
+            throw new ArithmeticException("Price can't be negative");
         }
     }
     

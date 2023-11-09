@@ -22,10 +22,11 @@ public class Book extends LiteraryPiece {
     }
     
     public void setAuthor(String newAuthor) {
-        if (!(newAuthor.isEmpty() || newAuthor.equals(" "))) {
+        try (ClassCheckingForStringContent cc = new ClassCheckingForStringContent(newAuthor)) {
+            cc.checkIfBlank();
             author = newAuthor;
-        } else {
-            System.out.println("Author can't be an empty string.");
+        } catch(RuntimeException e) {
+            System.out.println("Exception while changing author: "+ e.getMessage());
         }
     }
     

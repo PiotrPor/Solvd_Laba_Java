@@ -61,9 +61,13 @@ public class MainClass {
         List<Book> booksForHim = onlyLibrary.searchForBooksByGenre(firstClient.getFavouriteGenre());
         System.out.println("\n===================\n");
         if (!booksForHim.isEmpty()) {
+            try {
+                booksForHim.get(0).describeItself();
+                onlyLibrary.startLeaseOfBook("10.11.2023", booksForHim.get(0), firstClient, 16);
+            } catch(ArrayIndexOutOfBoundsException e) {
+                System.out.println("Tried to access invalid index in array of books");
+            }
             System.out.println("---- BOOK FOUND ----");
-            booksForHim.get(0).describeItself();
-            onlyLibrary.startLeaseOfBook("10.11.2023", booksForHim.get(0), firstClient, 16);
             onlyLibrary.printListOfLeases();
         } else {
             System.out.println("We don't have books you're looking for.");
