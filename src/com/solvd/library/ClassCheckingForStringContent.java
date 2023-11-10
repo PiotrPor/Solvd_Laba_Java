@@ -1,9 +1,13 @@
 package com.solvd.library;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.*;
 
 public class ClassCheckingForStringContent implements AutoCloseable {
     public String investigatedString;
+    private static final Logger LOGGER = LogManager.getLogger(ClassCheckingForStringContent.class);
 
     public ClassCheckingForStringContent() {
         investigatedString = "";
@@ -23,6 +27,6 @@ public class ClassCheckingForStringContent implements AutoCloseable {
     
     @Override
     public void close() {
-        System.out.println("Object used for checking a string is closing");
+        LOGGER.info("Object used for checking a string is closing");
     }
 }

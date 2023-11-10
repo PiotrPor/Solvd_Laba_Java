@@ -1,5 +1,8 @@
 package com.solvd.library;
 
+import com.solvd.library.interfaces.IStorageOfBooks;
+import com.solvd.library.interfaces.IForManagingBusiness;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +19,7 @@ public class Library implements IStorageOfBooks, IForManagingBusiness {
     private static final Logger LOGGER = LogManager.getLogger(Library.class);
     
     static {
-        System.out.println(" ! We're ready to open our library ! ");
+        LOGGER.info(" ! We're ready to open our library ! ");
     }
     
     public Library() {
