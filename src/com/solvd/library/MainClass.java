@@ -73,13 +73,13 @@ public class MainClass {
         LOGGER.info("\n===================\n");
         if (!booksForHim.isEmpty()) {
             try {
+                LOGGER.info("---- BOOK FOUND ----");
                 booksForHim.get(0).describeItself();
                 onlyLibrary.startLeaseOfBook("10.11.2023", booksForHim.get(0), firstClient, 16);
+                onlyLibrary.printListOfLeases();
             } catch(ArrayIndexOutOfBoundsException e) {
                 LOGGER.warn("Tried to access invalid index in array of books");
             }
-            LOGGER.info("---- BOOK FOUND ----");
-            onlyLibrary.printListOfLeases();
         } else {
             LOGGER.info("We don't have books you're looking for.");
         }
