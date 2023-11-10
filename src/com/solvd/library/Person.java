@@ -1,5 +1,7 @@
 package com.solvd.library;
 
+import com.solvd.library.interfaces.IHasName;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
