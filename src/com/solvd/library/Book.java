@@ -41,7 +41,7 @@ public class Book extends LiteraryPiece {
         return author;
     }
     
-    public void setISBN(String newISBN) {
+    public void setISBN(String newISBN) throws WrongIsbnSetException {
         if (newISBN.length() == 10 || newISBN.length() == 13) {
             isbn = newISBN;
         } else {

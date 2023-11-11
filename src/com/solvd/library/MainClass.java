@@ -34,6 +34,8 @@ public class MainClass {
         employeesForLibrary.add(new Employee("Jane", "Bookqueen", 1, 4000f));
         employeesForLibrary.add(new Employee("Margarett", "Paperlady", 2, 3900f));
         
+        //----------
+        
         booksForLibrary.add(new Book(
                 "The ABC murders",
                 "Wydawnictwo Dolnoslaskie",
@@ -50,6 +52,38 @@ public class MainClass {
                 88.39f,
                 "Jan Lucassen",
                 "9788324088713"));
+        Book thirdBook = new Book();
+        boolean thereWasAnException = false;
+        try {
+            thirdBook.setTitle("Felix, Net i Nika oraz Trzecia Kuzynka");
+            thirdBook.publisher = "Powergraph";
+            thirdBook.publishDate = "01.11.2009";
+            thirdBook.setGenre(LiteratureGenre.ADVENTURE);
+            thirdBook.setPrice(21.5f); //NegativeCostException
+            thirdBook.setAuthor("Rafal Kosik"); //RemovingAuthorException
+            thirdBook.setISBN("9788361187127"); //WrongIsbnSetException
+        } catch(RemovingTitleException e1) {
+            thereWasAnException = true;
+            LOGGER.warn(e1.getMessage());
+        } catch(NegativeCostException e2) {
+            thereWasAnException = true;
+            LOGGER.warn("Exception: "+ e2.getMessage());
+        } catch(RemovingAuthorException e3) {
+            thereWasAnException = true;
+            LOGGER.warn(e3.getMessage());
+        } catch(WrongIsbnSetException e4) {
+            thereWasAnException = true;
+            LOGGER.warn("Exception: "+ e4.getMessage());
+        } catch(Exception e5) {
+            thereWasAnException = true;
+            LOGGER.warn("Noncustom exception when adding book: "+ e5.getMessage());
+        }
+        
+        if (!thereWasAnException) {
+            booksForLibrary.add(thirdBook);
+        }
+        
+        //----------
         
         magazinesForLibrary.add(new Magazine(
                 "PC Format",
@@ -70,6 +104,8 @@ public class MainClass {
         
         Client firstClient = new Client("Andrew", "Bookeater", 2, LiteratureGenre.CRIME);
         Library onlyLibrary = new Library(employeesForLibrary, booksForLibrary, magazinesForLibrary);
+        
+        //---------------------
         
         List<Book> booksForHim = onlyLibrary.searchForBooksByGenre(firstClient.getFavouriteGenre());
         LOGGER.info("\n===================\n");
