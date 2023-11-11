@@ -1,7 +1,6 @@
 package com.solvd.library.exceptions;
 
-  //TODO: change which exception to extend ?
-public class NonexistentIndexAccessedException extends Exception {
+public class NonexistentIndexAccessedException extends RuntimeException {
     public NonexistentIndexAccessedException() {
         super();
     }
