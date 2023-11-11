@@ -1,6 +1,6 @@
 package com.solvd.library;
 
-import com.solvd.library.exceptions.NonexistentIndexAccessedException;
+import com.solvd.library.exceptions.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -116,7 +116,7 @@ public class MainClass {
                 onlyLibrary.startLeaseOfBook("10.11.2023", 0, firstClient, 16);
                 onlyLibrary.printListOfLeases();
             } catch(NonexistentIndexAccessedException e1) {
-                LOOGER.warn("Exception when leasing book: "+ e1.getMessage());
+                LOGGER.warn("Exception when leasing book: "+ e1.getMessage());
             } catch(ArrayIndexOutOfBoundsException e2) {
                 LOGGER.warn("Tried to access invalid index in array of books");
             }

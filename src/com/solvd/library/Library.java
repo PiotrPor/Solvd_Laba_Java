@@ -70,11 +70,11 @@ public class Library implements IStorageOfBooks, IForManagingBusiness {
     }
     
     public void startLeaseOfBook(String startingDate, Book b, Client thisClient, int lengthInDays) {
-        currentLeases.add(new Lease(startingDate, b, thisClient.clientNumber, lengthInDays));
+        currentLeases.add(new Lease(startingDate, b, thisClient.getClientNumber(), lengthInDays));
     }
     
     public void sellBook(String dateOfSale, Book b, Client thisClient) {
-        listOfSales.add(new Sale(dateOfSale, b, thisClient.clientNumber));
+        listOfSales.add(new Sale(dateOfSale, b, thisClient.getClientNumber()));
     }
     
     public void startLeaseOfBook(String startingDate, int index, Client thisClient, int lengthInDays) throws NonexistentIndexAccessedException {
@@ -89,7 +89,7 @@ public class Library implements IStorageOfBooks, IForManagingBusiness {
     //for now there's no method to lease a magazine
     
     public void sellMagazine(String dateOfSale, Magazine m, Client thisClient) {
-        listOfSales.add(new Sale(dateOfSale, m, thisClient.clientNumber));
+        listOfSales.add(new Sale(dateOfSale, m, thisClient.getClientNumber()));
     }
     
     public void printListOfLeases() {
