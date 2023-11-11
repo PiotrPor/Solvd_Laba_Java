@@ -1,6 +1,7 @@
 package com.solvd.library;
 
 import com.solvd.library.interfaces.IForTransaction;
+import com.solvd.library.exceptions.NegativeCostException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,11 +24,11 @@ public class Sale extends GivingLiterature implements IForTransaction {
         return cost;
     }
     
-    public void setCost(float newCost) throws ArithmeticException {
+    public void setCost(float newCost) throws NegativeCostException {
         if (newCost >= 0) {
             cost = newCost;
         } else {
-            throw new ArithmeticException("Cost can't be negative");
+            throw new NegativeCostException("Cost can't be negative");
         }
     }
     

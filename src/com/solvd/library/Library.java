@@ -2,6 +2,7 @@ package com.solvd.library;
 
 import com.solvd.library.interfaces.IStorageOfBooks;
 import com.solvd.library.interfaces.IForManagingBusiness;
+import com.solvd.library.exceptions.NonexistentIndexAccessedException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,6 +75,15 @@ public class Library implements IStorageOfBooks, IForManagingBusiness {
     
     public void sellBook(String dateOfSale, Book b, Client thisClient) {
         listOfSales.add(new Sale(dateOfSale, b, thisClient.clientNumber));
+    }
+    
+    public void startLeaseOfBook(String startingDate, int index, Client thisClient, int lengthInDays) throws NonexistentIndexAccessedException {
+        if (index >= 0 && index < ourBooks.size()) {
+            Book leasedBook = ourBooks.get(index);
+            this.startLeaseOfBook(startingDate, leasedBook, thisClient, lengthInDays);
+        } else {
+            throw new NonexistentIndexAccessedException("Tried to acccess an index which isn't in the array/collection");
+        }
     }
     
     //for now there's no method to lease a magazine

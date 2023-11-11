@@ -1,5 +1,8 @@
 package com.solvd.library;
 
+import com.solvd.library.exceptions.WrongIsbnSetException;
+import com.solvd.library.exceptions.RemovingAuthorException;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -25,12 +28,12 @@ public class Book extends LiteraryPiece {
         }
     }
     
-    public void setAuthor(String newAuthor) {
+    public void setAuthor(String newAuthor) throws RemovingAuthorException {
         try (ClassCheckingForStringContent cc = new ClassCheckingForStringContent(newAuthor)) {
             cc.checkIfBlank();
             author = newAuthor;
         } catch(RuntimeException e) {
-            LOGGER.warn("Exception while changing author: "+ e.getMessage());
+            throw new RemovingAuthorException("Exception when changing author: "+ e.getMessage());
         }
     }
     
@@ -42,7 +45,7 @@ public class Book extends LiteraryPiece {
         if (newISBN.length() == 10 || newISBN.length() == 13) {
             isbn = newISBN;
         } else {
-            LOGGER.warn("ISBN code must have either 10 or 13 digits");
+            throw new WrongIsbnSetException("ISBN code must have either 10 or 13 digits");
         }
     }
     

@@ -1,6 +1,8 @@
 package com.solvd.library;
 
 import com.solvd.library.interfaces.IPurchasable;
+import com.solvd.library.exceptions.RemovingTitleException;
+import com.solvd.library.exceptions.NegativeCostException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -29,12 +31,12 @@ abstract public class LiteraryPiece implements IPurchasable {
         price = newPrice;
     }
     
-    public void setTitle(String newTitle) {
+    public void setTitle(String newTitle) throws RemovingTitleException {
         try (ClassCheckingForStringContent cc = new ClassCheckingForStringContent(newTitle)) {
             cc.checkIfBlank();
             title = newTitle;
         } catch(RuntimeException e) {
-            LOGGER.warn("Exception while changing title: "+ e.getMessage());
+            throw new RemovingTitleException("Exception when changing title: "+ e.getMessage());
         }
     }
     
@@ -50,11 +52,11 @@ abstract public class LiteraryPiece implements IPurchasable {
         return genre;
     }
     
-    public void setPrice(float newPrice) throws ArithmeticException {
+    public void setPrice(float newPrice) throws NegativeCostException {
         if (newPrice >= 0f) {
             price = newPrice;
         } else {
-            throw new ArithmeticException("Price can't be negative");
+            throw new NegativeCostException("Price can't be negative");
         }
     }
     

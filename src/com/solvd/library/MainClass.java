@@ -1,5 +1,7 @@
 package com.solvd.library;
 
+import com.solvd.library.exceptions.NonexistentIndexAccessedException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,13 +75,15 @@ public class MainClass {
         LOGGER.info("\n===================\n");
         if (!booksForHim.isEmpty()) {
             try {
+                LOGGER.info("---- BOOK FOUND ----");
                 booksForHim.get(0).describeItself();
-                onlyLibrary.startLeaseOfBook("10.11.2023", booksForHim.get(0), firstClient, 16);
-            } catch(ArrayIndexOutOfBoundsException e) {
+                onlyLibrary.startLeaseOfBook("10.11.2023", 0, firstClient, 16);
+                onlyLibrary.printListOfLeases();
+            } catch(NonexistentIndexAccessedException e1) {
+                LOOGER.warn("Exception when leasing book: "+ e1.getMessage());
+            } catch(ArrayIndexOutOfBoundsException e2) {
                 LOGGER.warn("Tried to access invalid index in array of books");
             }
-            LOGGER.info("---- BOOK FOUND ----");
-            onlyLibrary.printListOfLeases();
         } else {
             LOGGER.info("We don't have books you're looking for.");
         }
