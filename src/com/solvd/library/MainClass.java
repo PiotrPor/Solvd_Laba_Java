@@ -123,5 +123,7 @@ public class MainClass {
         } else {
             LOGGER.info("We don't have books you're looking for.");
         }
+
+        LOGGER.info("Program finished its tasks");
     }
 }
