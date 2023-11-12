@@ -15,7 +15,7 @@ public class Library implements IStorageOfBooks, IForManagingBusiness {
     public List<Book> ourBooks;
     public List<Magazine> ourMagazines;
     public List<Lease> currentLeases;
-    public List<Sale> listOfSales;
+    public MyLinkedListWithGeneric<Sale> listOfSales;
     private float income;
     private static final Logger LOGGER = LogManager.getLogger(Library.class);
     
@@ -28,7 +28,7 @@ public class Library implements IStorageOfBooks, IForManagingBusiness {
         ourBooks = new ArrayList<>();
         ourMagazines = new ArrayList<>();
         currentLeases = new ArrayList<>();
-        listOfSales = new ArrayList<>();
+        listOfSales = new MyLinkedListWithGeneric();
         income = 0f;
     }
     
@@ -37,7 +37,7 @@ public class Library implements IStorageOfBooks, IForManagingBusiness {
         ourBooks = books;
         ourMagazines = mags;
         currentLeases = new ArrayList<>();
-        listOfSales = new ArrayList<>();
+        listOfSales = new MyLinkedListWithGeneric();
         income = 0f;
     }
     
