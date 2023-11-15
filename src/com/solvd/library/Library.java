@@ -28,7 +28,7 @@ public class Library implements IStorageOfBooks, IForManagingBusiness {
         ourBooks = new ArrayList<>();
         ourMagazines = new ArrayList<>();
         currentLeases = new ArrayList<>();
-        listOfSales = new MyLinkedListWithGeneric();
+        listOfSales = new MyLinkedListWithGeneric<Sale>();
         income = 0f;
     }
     
