@@ -32,13 +32,18 @@ public class Library implements IStorageOfBooks, IForManagingBusiness {
         income = 0f;
     }
     
-    public Library(List<Employee> emps, List<Book> books, List<Magazine> mags) {
-        listOfEmployees = emps;
-        ourBooks = books;
-        ourMagazines = mags;
-        currentLeases = new ArrayList<>();
-        listOfSales = new MyLinkedListWithGeneric();
-        income = 0f;
+    //constructor with parameters had to be removed
+
+    public void addEmployeeToList(Employee e) {
+        this.listOfEmployees.add(e);
+    }
+
+    public void addBookToList(Book b) {
+        this.ourBooks.add(b);
+    }
+
+    public void addMagazineToList(Magazine m) {
+        this.ourMagazines.add(m);
     }
     
     public void addToIncome(float toBeAdded) {

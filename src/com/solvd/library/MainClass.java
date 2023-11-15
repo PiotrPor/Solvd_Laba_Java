@@ -103,7 +103,23 @@ public class MainClass {
         //-------------------
         
         Client firstClient = new Client("Andrew", "Bookeater", 2, LiteratureGenre.CRIME);
-        Library onlyLibrary = new Library(employeesForLibrary, booksForLibrary, magazinesForLibrary);
+
+        //-------------------
+        
+        int i;
+        Library onlyLibrary = new Library();
+
+        for(i=0; i<employeesForLibrary.size();i++) {
+            onlyLibrary.addEmployeeToList(employeesForLibrary.get(i));
+        }
+
+        for(i=0; i<booksForLibrary.size();i++) {
+            onlyLibrary.addBookToList(booksForLibrary.get(i));
+        }
+
+        for(i=0; i<magazinesForLibrary.size();i++) {
+            onlyLibrary.addMagazineToList(magazinesForLibrary.get(i));
+        }
         
         //---------------------
         
