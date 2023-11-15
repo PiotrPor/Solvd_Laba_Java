@@ -82,19 +82,34 @@ public class Library implements IStorageOfBooks, IForManagingBusiness {
         listOfSales.add(new Sale(dateOfSale, b, thisClient.getClientNumber()));
     }
     
-    public void startLeaseOfBook(String startingDate, int index, Client thisClient, int lengthInDays) throws NonexistentIndexAccessedException {
-        if (index >= 0 && index < ourBooks.size()) {
-            Book leasedBook = ourBooks.get(index);
-            this.startLeaseOfBook(startingDate, leasedBook, thisClient, lengthInDays);
+    public boolean startLeaseOfBook(String startingDate, String itsTitle, Client thisClient, int lengthInDays) {
+        boolean wasLeasingSuccessful = false;
+        int wantedIndex = getIndexOfBookByTitle(itsTitle);
+        if(wantedIndex>=0 && wantedIndex<ourBooks.size()) {
+            Book wantedBook = ourBooks.get(wantedIndex);
+            startLeaseOfBook(startingDate,wantedBook,thisClient,lengthInDays);
+            wasLeasingSuccessful = true;
         } else {
-            throw new NonexistentIndexAccessedException("Tried to acccess an index which isn't in the array/collection");
+            LOGGER.warn("There is no such book to be leased: "+ itsTitle);
         }
+        return wasLeasingSuccessful;
     }
     
     //for now there's no method to lease a magazine
     
     public void sellMagazine(String dateOfSale, Magazine m, Client thisClient) {
         listOfSales.add(new Sale(dateOfSale, m, thisClient.getClientNumber()));
+    }
+
+    public int getIndexOfBookByTitle(String searchedTitle) {
+        int foundIndex = -1;
+        for(int i=0; i<ourBooks.size(); i++) {
+            if(ourBooks.get(i).getTitle().equals(searchedTitle)) {
+                foundIndex = i;
+                break;
+            }
+        }
+        return foundIndex;
     }
     
     public void printListOfLeases() {

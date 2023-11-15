@@ -103,9 +103,10 @@ public class MainClass {
         //-------------------
         
         Client firstClient = new Client("Andrew", "Bookeater", 2, LiteratureGenre.CRIME);
+        Client secondClient = new Client("John","Kowalsky",3,LiteratureGenre.SCIFI);
 
         //-------------------
-        
+
         int i;
         Library onlyLibrary = new Library();
 
@@ -122,22 +123,23 @@ public class MainClass {
         }
         
         //---------------------
-        
-        List<Book> booksForHim = onlyLibrary.searchForBooksByGenre(firstClient.getFavouriteGenre());
         LOGGER.info("\n===================\n");
+
+        List<Book> booksForHim = onlyLibrary.searchForBooksByGenre(firstClient.getFavouriteGenre());
         if (!booksForHim.isEmpty()) {
-            try {
-                LOGGER.info("---- BOOK FOUND ----");
-                booksForHim.get(0).describeItself();
-                onlyLibrary.startLeaseOfBook("10.11.2023", 0, firstClient, 16);
-                onlyLibrary.printListOfLeases();
-            } catch(NonexistentIndexAccessedException e1) {
-                LOGGER.warn("Exception when leasing book: "+ e1.getMessage());
-            } catch(ArrayIndexOutOfBoundsException e2) {
-                LOGGER.warn("Tried to access invalid index in array of books");
-            }
+            LOGGER.info("---- BOOK FOUND ----");
+            booksForHim.getFirst().describeItself();
+            onlyLibrary.startLeaseOfBook("10.11.2023", booksForHim.getFirst(), firstClient, 16);
+            onlyLibrary.printListOfLeases();
         } else {
             LOGGER.info("We don't have books you're looking for.");
+        }
+
+        String titleOfBookToLease = "Historia pracy. Nowe dzieje ludzkosci";
+        if(onlyLibrary.startLeaseOfBook("14.11.2023",titleOfBookToLease,secondClient,14)) {
+            LOGGER.info("Has leased \""+titleOfBookToLease+"\" to client no. "+ Integer.toString(secondClient.getClientNumber()));
+        } else {
+            LOGGER.info("Failed to lease \""+titleOfBookToLease+"\" to client no. "+ Integer.toString(secondClient.getClientNumber()));
         }
 
         LOGGER.info("Program finished its tasks");
